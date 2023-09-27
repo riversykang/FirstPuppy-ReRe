@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+		body{background-image: url('snow.png')}
+		.puppy{position: absolute; left: 0; top: 0;}
+		#poetText{z-index: 9; position: absolute; left: 300px; top: 200px; font-size: 2rem;}
+		.word{opacity: 0; animation: fadein 5s forwards; animation-iteration-count: 1;}
+		@keyframes fadein{
+			to{opacity: 1;}
+		}
+	</style>
+	<title>FirstPuppy</title>
+</head>
+<body>
+	<font color="white">
+	<div id="poetText"></div>
+	<script type="text/javascript">
+
+		var a = ["puppy","puppy2"];
+
+
+		for(var i=0;i<100;i++){
+			var t = document.createElement("img");
+			t.src = a[randomBH(0,1)] + ".png";
+			t.className = "puppy";
+			t.style.width = randomBH(30,100) + "px";
+			t.style.height = "auto";
+			t.style.left = Math.random()*screen.availWidth + "px";
+			t.style.top = Math.random()*screen.availHeight + "px";
+			document.body.appendChild(t);
+
+		}
+			
+
+			function randomBH(min, max) {
+			  min = Math.ceil(min);
+			  max = Math.floor(max);
+			  return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+
+
+		var poet = "첫눈<br><br><br>첫눈을 놓쳤다고<br><br>아쉬워 말자.<br><br>지금 내 머리 위에 떨어지는<br><br>이 눈이 첫눈이고<br><br>느낄 수 있는 순수함이다.<br>";
+		var poetArr = poet.split(" ");
+
+		var myTimer = setInterval(print,500);
+		var s=0;
+		function print(){
+			var t= document.createElement("span");
+			t.innerHTML = poetArr[s] + " ";
+			t.className = "word";
+			s++;
+			poetText.appendChild(t);
+			
+			if(s == poetArr.length){
+				clearInterval(myTimer);
+			}
+		}
+
+
+	
+	</script>
+</body>
+</html>
